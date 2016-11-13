@@ -21,12 +21,13 @@ public class Main {
     get("/hello", (req, res) -> "Hello World");
 
       get("/hook", (req, res) -> {
-          System.out.println("hub.mode="+req.attribute("hub.mode")+"; hub.verify_token="+req.attribute("hub.verify_token"));
-          if ("subscribe".equals(req.attribute("hub.mode")) &&
-                  "1234567890".equals(req.attribute("hub.verify_token"))) {
+
+          System.out.println("hub.mode="+req.headers("hub.mode")+"; hub.verify_token="+req.headers("hub.verify_token"));
+          if ("subscribe".equals(req.headers("hub.mode")) &&
+                  "1234567890".equals(req.headers("hub.verify_token"))) {
               System.out.println("Validating webhook");
               //res.status(200).send(req.query['hub.challenge']);
-              return req.attribute("hub.challenge");
+              return req.headers("hub.challenge");
           } else {
               System.out.println("Failed validation. Make sure the validation tokens match.");
               return "token code not match";
