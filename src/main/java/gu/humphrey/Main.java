@@ -20,7 +20,7 @@ public class Main {
 
     get("/hello", (req, res) -> "Hello World");
 
-      get("/hook", (req, res) -> "Hello World Hook 199@@&6");
+      get("/hook", (req, res) -> "1234567890");
 
     get("/", (request, response) -> {
             Map<String, Object> attributes = new HashMap<>();
