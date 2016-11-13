@@ -29,6 +29,7 @@ public class Main {
           System.out.println("params=" + req.params());
           System.out.println("queryString="+req.queryString());
           System.out.println("queryMap="+req.queryMap());
+          System.out.println("queryMap="+req.queryMap().toMap());
           System.out.println("queryParams="+req.queryParams());
           System.out.println("hub.mode="+req.queryParams("hub.mode")+"; hub.verify_token="+req.queryParams("hub.verify_token"));
           if ("subscribe".equals(req.queryParams("hub.mode")) &&
