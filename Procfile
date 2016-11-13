@@ -1,1 +1,1 @@
-web: java -jar target/maklumore.jar
+web: java -jar target/maklumore.jar $PORT
