@@ -27,9 +27,12 @@ public class Main {
           System.out.println("cookies="+req.cookies());
           System.out.println("host="+req.host());
           System.out.println("params=" + req.params());
-          System.out.println("hub.mode="+req.params("hub.mode")+"; hub.verify_token="+req.params("hub.verify_token"));
-          if ("subscribe".equals(req.params("hub.mode")) &&
-                  "1234567890".equals(req.params("hub.verify_token"))) {
+          System.out.println("queryString="+req.queryString());
+          System.out.println("queryMap="+req.queryMap());
+          System.out.println("queryParams="+req.queryParams());
+          System.out.println("hub.mode="+req.queryParams("hub.mode")+"; hub.verify_token="+req.queryParams("hub.verify_token"));
+          if ("subscribe".equals(req.queryParams("hub.mode")) &&
+                  "1234567890".equals(req.queryParams("hub.verify_token"))) {
               System.out.println("Validating webhook");
               //res.status(200).send(req.query['hub.challenge']);
               return req.headers("hub.challenge");
