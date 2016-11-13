@@ -21,6 +21,7 @@ public class Main {
     get("/hello", (req, res) -> "Hello World");
 
       get("/hook", (req, res) -> {
+          System.out.println("hub.mode="+req.attribute("hub.mode")+"; hub.verify_token="+req.attribute("hub.verify_token"));
           if ("subscribe".equals(req.attribute("hub.mode")) &&
                   "1234567890".equals(req.attribute("hub.verify_token"))) {
               System.out.println("Validating webhook");
