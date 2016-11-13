@@ -21,10 +21,15 @@ public class Main {
     get("/hello", (req, res) -> "Hello World");
 
       get("/hook", (req, res) -> {
-
-          System.out.println("hub.mode="+req.headers("hub.mode")+"; hub.verify_token="+req.headers("hub.verify_token"));
-          if ("subscribe".equals(req.headers("hub.mode")) &&
-                  "1234567890".equals(req.headers("hub.verify_token"))) {
+          System.out.println("headers=" + req.headers());
+          System.out.println("attributes=" + req.attributes());
+          System.out.println("body=" + req.body());
+          System.out.println("cookies="+req.cookies());
+          System.out.println("host="+req.host());
+          System.out.println("params=" + req.params());
+          System.out.println("hub.mode="+req.params("hub.mode")+"; hub.verify_token="+req.params("hub.verify_token"));
+          if ("subscribe".equals(req.params("hub.mode")) &&
+                  "1234567890".equals(req.params("hub.verify_token"))) {
               System.out.println("Validating webhook");
               //res.status(200).send(req.query['hub.challenge']);
               return req.headers("hub.challenge");
